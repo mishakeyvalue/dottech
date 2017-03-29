@@ -20,11 +20,14 @@ module.exports = function(machine, dirs, files) {
             color: aliceblue;
             padding: 4px;
         }
+        div {
+    width: 320px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0;
+}
         
-        .uptime {
-            background: #0000FF;
-            border: 2px solid #000080;
-        }
+
         
         h1 {
             font-size: 48px;
@@ -67,7 +70,7 @@ module.exports = function(machine, dirs, files) {
         Welcome to the ${machine}!
     </h1>
     <div class="uptime">
-        We are uptime : ${os.uptime()} seconds;
+        We are uptime : ${os.uptime() / 1000} seconds;
     </div>
 
         <div class="uptime">
@@ -76,6 +79,10 @@ module.exports = function(machine, dirs, files) {
 
             <div class="uptime">
         We use memory: ${getMemoryUsage()} MB
+    </div>
+
+                <div class="uptime">
+        CPU : ${getCpus()}
     </div>
 
     ${links}
@@ -93,4 +100,23 @@ const process = require('process')
 
 function getMemoryUsage() {
     return process.memoryUsage().heapUsed / 1000000;
+}
+
+function getCpus() {
+    var cpus = os.cpus();
+
+    for (var i = 0, len = cpus.length; i < len; i++) {
+        console.log("CPU %s:", i);
+        var cpu = cpus[i],
+            total = 0;
+
+        for (var type in cpu.times) {
+            total += cpu.times[type];
+        }
+        let o = "";
+        for (type in cpu.times) {
+            o += ("\t", type, Math.round(100 * cpu.times[type] / total), "\n");
+        }
+        return total;
+    }
 }
