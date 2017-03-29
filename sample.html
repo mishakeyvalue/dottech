@@ -1,15 +1,4 @@
-const os = require('os');
-
-module.exports = function(machine, dirs, files) {
-    let links = "";
-    for (l in dirs) {
-        links += getLink(dirs[l], 'dir');
-    }
-    for (l in files) {
-        links += getLink(files[l], 'file');
-    }
-
-    return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -67,30 +56,11 @@ module.exports = function(machine, dirs, files) {
         Welcome to the ${machine}!
     </h1>
     <div class="uptime">
-        We are uptime : ${os.uptime()} seconds;
-    </div>
-
-        <div class="uptime">
-        Memory free: ${os.freemem()/1000000} MB
-    </div>
-
-            <div class="uptime">
-        We use memory: ${getMemoryUsage()} MB
+        We are uptime : ${}
     </div>
 
     ${links}
 
 </body>
 
-</html>`;
-}
-
-let getLink = function(link, cl) {
-    return `<p><a href="${link}" class=${cl}>${link}</a></p>`
-}
-
-const process = require('process')
-
-function getMemoryUsage() {
-    return process.memoryUsage().heapUsed / 1000000;
-}
+</html>

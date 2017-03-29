@@ -36,3 +36,4 @@ let server = http.createServer(function(req, res) {
 
 });
 server.listen(3000)
+console.log("Listening on " + server.address().address + " **port: " + server.address().port)
