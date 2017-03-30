@@ -5,37 +5,26 @@ const os = require("os");
 const hostname = os.hostname();
 
 const express = require('express');
+let app = express();
+app.set('view engine', 'ejs');
+
+app.get("/", h_index);
+app.get("/fileman/*", h_fileman);
 
 
-let server = http.createServer(function(req, res) {
-    console.log('Request to: ' + req.url)
-        //---
+function h_index(req, res) {
+    res.send(req.params);
+};
 
-    try {
-        if (file_s.isFile(req.url)) {
-            res.writeHead(200, {
-                'content-type': file_s.get_content_type(req.url),
-            });
-            res.end(file_s.readFile(req.url))
-        } else {
-            let dir_content = file_s.get_dir(req.url);
-            let page = get_page(hostname, dir_content.dirs, dir_content.files)
-            res.writeHead(200, {
-                'content-type': 'text/html;',
-            });
-            res.end(page)
-        }
-
-    } catch (err) {
-        res.writeHead(404, {
-            'content-type': 'text/html;',
-        });
-        res.end(err.message)
+function h_fileman(req, res) {
+    let route = '/' + req.params['0'];
+    console.log(route);
+    let dir_content = file_s.get_dir(route);
+    let content = {
+        host: app.settings,
+        dirs: dir_content.dirs,
+        files: dir_content.files
     }
-
-    //---
-
-
-});
-server.listen(3000)
-console.log("Listening on " + server.address().address + " **port: " + server.address().port)
+    res.render('fileman', { content: content });
+}
+app.listen(3000);
