@@ -1,8 +1,10 @@
-let http = require('http');
-let get_page = require('./page')
-let file_s = require('./files')
-var os = require("os");
+const http = require('http');
+const get_page = require('./page');
+const file_s = require('./files');
+const os = require("os");
 const hostname = os.hostname();
+
+const express = require('express');
 
 
 let server = http.createServer(function(req, res) {

@@ -1,0 +1,27 @@
+{
+  "name": "node_panel",
+  "version": "1.0.0",
+  "description": "Tool for managing my buisnesses in a more efficient way",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitutee/node_Panel.git"
+  },
+  "keywords": [
+    "panel",
+    "admin",
+    "panel"
+  ],
+  "author": "mitutee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mitutee/node_Panel/issues"
+  },
+  "homepage": "https://github.com/mitutee/node_Panel#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
