@@ -1,4 +1,3 @@
-const http = require('http');
 const file_s = require('./files');
 const os = require("os");
 const hostname = os.hostname();
@@ -6,13 +5,17 @@ const hostname = os.hostname();
 const express = require('express');
 let app = express();
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use('/assets', function(req, res, next) {
+    console.log("assets were asked: " + req.url)
+    express.static('public/assets')(req, res, next);
+});
 
 app.get("/", h_index);
 app.get("/fileman/*", h_fileman);
 
 
 function h_index(req, res) {
+    console.log(req.url)
     res.render('index')
 };
 
