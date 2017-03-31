@@ -1,0 +1,36 @@
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Column heading</th>
+      <th>Column heading</th>
+      <th>Column heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% let i = 0; %>
+    <% content.dirs.forEach(function(dir){ %>
+        
+
+            <tr role="button" class='clickable-row' data-href="http://localhost:3000/fileman<%= dir %>">
+              <a href="http://localhost:3000/fileman<%= dir %>"  ></a> 
+              
+                              <td><a href="http://localhost:3000/fileman<%= dir %>"  ><%= dir %></a> </td>
+                <td> content</td>
+                <td>Column content</td>
+              
+               <td><%=i%></td>
+
+            </tr>
+    <% i++; }) %>
+  </tbody>
+</table> 
+
+
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
+    jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+</script>
