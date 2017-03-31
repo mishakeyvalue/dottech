@@ -23,7 +23,8 @@ app.post("/todo", urlencodedParser, function(req, res) {
 
 function h_index(req, res) {
     console.log(req.url)
-    res.render('index')
+    let mem_usage = parseInt((os.freemem() / os.totalmem()) * 100);
+    res.render('index', { mem_usage: mem_usage });
 };
 
 function h_fileman(req, res) {
