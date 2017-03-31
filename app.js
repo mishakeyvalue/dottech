@@ -1,6 +1,7 @@
 const file_s = require('./files');
 const os = require("os");
 const hostname = os.hostname();
+const bodyParser = require('body-parser');
 
 const express = require('express');
 let app = express();
@@ -13,6 +14,12 @@ app.use('/assets', function(req, res, next) {
 app.get("/", h_index);
 app.get("/fileman/*", h_fileman);
 
+// create application/x-www-form-urlencoded parser 
+let urlencodedParser = bodyParser.urlencoded({ extended: false })
+app.post("/todo", urlencodedParser, function(req, res) {
+    console.log(req.body);
+    res.end("Done.")
+});
 
 function h_index(req, res) {
     console.log(req.url)
