@@ -1,29 +1,34 @@
 {
-  "name": "node_panel",
-  "version": "1.0.0",
-  "description": "Tool for managing my buisnesses in a more efficient way",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mitutee/node_Panel.git"
-  },
-  "keywords": [
-    "panel",
-    "admin",
-    "panel"
-  ],
-  "author": "mitutee",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mitutee/node_Panel/issues"
-  },
-  "homepage": "https://github.com/mitutee/node_Panel#readme",
-  "dependencies": {
-    "body-parser": "^1.17.1",
-    "ejs": "^2.5.6",
-    "express": "^4.15.2"
-  }
+    "name": "node_panel",
+    "version": "1.0.0",
+    "description": "Tool for managing my buisnesses in a more efficient way",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mitutee/node_Panel.git"
+    },
+    "keywords": [
+        "panel",
+        "admin",
+        "panel"
+    ],
+    "author": "mitutee",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/mitutee/node_Panel/issues"
+    },
+    "homepage": "https://github.com/mitutee/node_Panel#readme",
+    "dependencies": {
+        "body-parser": "^1.17.1",
+        "ejs": "^2.5.6",
+        "express": "^4.15.2",
+        "terminal-js": "^1.0.2",
+        "child_pty": "^0.3.1",
+        "socket.io": "^1.2.0",
+        "socket.io-stream": "^0.6.0",
+        "terminal.js": "git://github.com/Gottox/terminal.js#refactorTermWriter"
+    }
 }
