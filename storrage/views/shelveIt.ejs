@@ -6,12 +6,35 @@
  <body>
   <h1>YOUR PERSONAL CHAOS ZONE</h1>
   <h2>Store interesting articles, videos or links for later view!</h2>
-  <form action="">
+  
+  <div>
+<!-- Regular Input with Floating labels -->
+<form action="/" method="POST">
+<div class="form-group pmd-textfield pmd-textfield-floating-label input-group">
+   <input type="text" id="regular1" class="form-control" name="item">
+
+   <span class="input-group-btn">
+        <!--Medium primary circle raised button with ripple effect -->
+        <button class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary" type="submit"><i class="material-icons pmd-sm">add</i></button>
+   </span>
+
+</div>
+</form>
 
 
-   <input type="text" name="item" id="regular1">
-   <button type="submit" >Store it!</button>
 
-  </form>
+    <!--List containing links -->
+    <div class="list-group pmd-z-depth pmd-list pmd-card-list">
+        <% for(let i in d){ %>
+            <a class="list-group-item" href="javascript:void(0);">
+        <form method="POST" action="/del">             
+            <button type="submit">del</button>
+        </form>
+              <%= d[i].item %></a>        
+        
+            
+       <% } %>
+
+    </div>
  </body>
 </html>
