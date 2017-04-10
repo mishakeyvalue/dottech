@@ -20,9 +20,9 @@ module.exports.GetCollection = function(callback) {
     });
 };
 
-module.exports.MakeDone = function(task_id, callback) {
+module.exports.ChangeStatus = function(task_id, callback, new_status) {
     console.log(task_id)
-    TaskEntity.findByIdAndUpdate(task_id, { done: true }, function(err, result) {
+    TaskEntity.findByIdAndUpdate(task_id, { done: new_status }, function(err, result) {
         if (err) throw err;
         callback();
         console.log(`Result of updating: ${result}`)

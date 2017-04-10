@@ -33,29 +33,23 @@
   </thead>
   <tbody>
 
-<% let counter = 0; %>
-<% for(t in tasks) {
-  if(!tasks[t].done){  
-%>
-    <tr class="info" id="<%= tasks[t]._id %>">
-      <td><%= counter++; %></td>
-      <td> <a href="http://google.com"> <%= tasks[t].task %> </a></td>
-    </tr>
-<%}}%>
-
-<% counter = 0; %>
-<% for(t in tasks) {
-  if(tasks[t].done){  
-%>
-    <tr class="success" id="<%= tasks[t]._id %>">
-      <td><%= counter++; %></td>
-      <td> <%= tasks[t].task %> </td>
-    </tr>
-<%}}%>
+<%= unpackCollection(taskCollectionViewModel.notDone, false) %>
+<%= unpackCollection(taskCollectionViewModel.done, true) %>
 
 
   </tbody>
 </table> 
+
+<% function unpackCollection(collection, isDone){ 
+  let status_class = isDone ? "success" : "info";
+  let counter = 0; 
+  collection.forEach(function(t){ %>
+    <tr class="<%=status_class %>" id="<%= t._id %>">
+      <td><%= counter++; %></td>
+      <td> <a href="http://google.com"> <%= t.task %> </a></td>
+    </tr>
+<%});%>
+ <%}%>
 
     </body>
   <script>
@@ -67,9 +61,9 @@
             $.ajax({
               type: 'PUT',
               data: 'id=17446&chru=0',
-              success: function() { location.reload() },
-              error: function(){  location.reload()},
-              url: '/'+_id,
+              success: function() {location.reload() },
+              error: function(){ location.reload() },
+              url: '/do/'+_id,
               cache:false
             });
           

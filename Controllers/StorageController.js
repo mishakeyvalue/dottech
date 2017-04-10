@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
 
         storageService.GetAll(function(data) {
-            res.render("index", { tasks: data });
+            res.render("index", { taskCollectionViewModel: data });
         });
     });
 
@@ -23,9 +23,9 @@ module.exports = function(app) {
         res.redirect('/');
     });
 
-    app.put("/:id", function(req, res) {
+    app.put("/do/:id", function(req, res) {
         storageService.MakeDone(req.params.id, function() {
-            res.redirect('/');
+            res.sendStatus(200)
         })
     });
 
