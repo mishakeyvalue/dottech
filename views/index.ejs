@@ -47,6 +47,18 @@
     <tr class="<%=status_class %>" id="<%= t._id %>">
       <td><%= counter++; %></td>
       <td> <a href="http://google.com"> <%= t.task %> </a></td>
+
+      <td width="15%">
+        <!-- Single button -->
+        <div class="btn-group">
+          <% if(isDone) {%>
+           <a href="#" class="btn btn-primary btn-xs btn-undo">Not done yet!</a>
+           <% } %>
+        </div>
+      </td>
+        <td width="15%">
+        <a href="#" class="btn btn-danger btn-xs">Delete!</a>        
+      </td>
     </tr>
 <%});%>
  <%}%>
@@ -54,7 +66,18 @@
     </body>
   <script>
     $(document).ready(function() {
-
+        $('#btn-undo a').click(function() {
+          console.log("V")
+            var _id = $(this).parent().parent().parent.attr('id');
+            console.log(_id);
+            $.ajax({
+              type: 'PUT',
+              data: 'id=17446&chru=0',
+              success: function() {location.reload() },
+              error: function(){ location.reload() },
+              url: '/do/'+_id,
+              cache:false
+            });
         $('#toread tr').click(function() {
             var _id = $(this).attr('id');
             console.log(_id);
@@ -73,10 +96,7 @@
 
     });
 
-    $(function() {
-  $('#').click(function() {
 
-  });
 });
   </script>
 </html>
