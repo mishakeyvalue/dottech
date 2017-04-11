@@ -69,20 +69,18 @@
     </body>
   <script>
     $(document).ready(function() {
-        $('.btn-undo').click(function() {
-          console.log("V")
+          $(".btn-undo").click(function(){
+            
             var _id = $(this).parent().parent().parent().attr('id');
-            console.log(_id);
             $.ajax({
               type: 'PUT',
               data: 'id=17446&chru=0',
               success: function() {location.reload() },
               error: function(){ location.reload() },
-              url: '/do/'+_id,
+              url: '/undo/'+_id,
               cache:false
             });
-        });
-
+          });
           $(".btn-do").click(function(){
             
             var _id = $(this).parent().parent().parent().attr('id');

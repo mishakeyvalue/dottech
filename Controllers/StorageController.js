@@ -23,8 +23,21 @@ module.exports = function(app) {
         res.redirect('/');
     });
 
+    app.delete('/', urlencodedParser, function(req, res) {
+
+        storageService.Add({ task: req.body.body });
+
+        res.redirect('/');
+    });
+
     app.put("/do/:id", function(req, res) {
         storageService.MakeDone(req.params.id, function() {
+            res.sendStatus(200)
+        })
+    });
+
+    app.put("/undo/:id", function(req, res) {
+        storageService.MakeUndone(req.params.id, function() {
             res.sendStatus(200)
         })
     });
