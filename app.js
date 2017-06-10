@@ -1,16 +1,14 @@
 const express = require('express');
-const StorageController = require('./Controllers/StorageController');
 
 let app = express();
+let PORT = 5555;
 // configure my app
 app.set('view engine', 'ejs');
-app.use('/assets', function(req, res, next) {
-    console.log("assets were asked: " + req.url)
-    express.static('public/assets')(req, res, next);
-});
-
+app.use(express.static('public'))
 
 // Fire up Controllers
-StorageController(app);
+app.get('/', (req, res) =>{
+    res.render('index');
+});
 
-app.listen(3000);
+app.listen(PORT); console.log("App is listening on the port " + PORT);
