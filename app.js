@@ -1,14 +1,14 @@
 const express = require('express');
 
 let app = express();
+let PORT = 5555;
 // configure my app
 app.set('view engine', 'ejs');
 app.use(express.static('public'))
 
-
+// Fire up Controllers
 app.get('/', (req, res) =>{
     res.render('index');
 });
-// Fire up Controllers
 
-app.listen(5555);
+app.listen(PORT); console.log("App is listening on the port " + PORT);

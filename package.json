@@ -1,7 +1,7 @@
 {
-  "name": "storeage",
+  "name": "my-panel",
   "version": "0.0.1",
-  "description": "Web app for my linkz",
+  "description": "my landing page",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,7 +23,6 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "ejs": "^2.5.6",
-    "express": "^4.15.2",
-    "nodemon": "^1.11.0"
+    "express": "^4.15.2"
   }
 }
