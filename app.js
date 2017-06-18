@@ -1,7 +1,20 @@
 const express = require('express');
 
 let app = express();
-let PORT = 5555;
+
+
+var opts = require('optimist')
+    .options({
+        port: {
+            demand: false,
+            alias: 'p',
+            description: 'port to listen to'
+        },
+    }).boolean('allow_discovery').argv;
+let PORT;
+if (opts.port) {
+    PORT = opts.port;
+} else PORT = 5555;
 // configure my app
 app.set('view engine', 'ejs');
 app.use(express.static('public'))
