@@ -1,0 +1,187 @@
+* {
+font-family: 'Overpass', sans-serif;
+}
+
+.centered{
+    text-align: center;
+}
+
+.pad-top{
+    padding-top: 70px;
+}
+
+.pad-bottom{
+    padding-bottom: 70px;
+}
+
+.btn-light{
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+}
+
+.btn-light:hover{
+    color: #232322;
+    background: #FFFFFF;
+}
+
+.btn-name {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.img-default{
+    width: 120px;
+    height: 120px;
+}
+
+.navbar-header a{
+    font-size: 21px;
+}
+
+.enter-header {
+    padding-top: 50px; 
+    padding-bottom: 50px;
+    text-align: center;
+    color: black;
+    background: url(../images/v_cliff.jpg) no-repeat center center;
+
+    /* Set a specific height */
+    min-height: 100%;
+    height: 100vh;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.enter-header h2 {
+    color: white;
+}
+
+.enter-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.enter-message > h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 4em;
+    font-weight: 900;
+}
+
+.about h1{
+    font-weight: 900;
+    font-size: 45px;
+}
+
+.about h2{
+    font-weight: 300;
+    font-size: 30px;
+    color: #b9b9b9;
+    line-height: 1.1;
+}
+
+.features-section-a {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+.features-section-b {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.features-heading {
+    font-weight: 900;    
+    margin-bottom: 30px;
+}
+
+.banner {
+    padding: 100px 0;
+    color: #FFFFFF;
+    background: url(../images/footer-banner.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.banner h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.8);
+    font-size: 3em;
+    font-weight: 900;  
+}
+
+.banner ul {
+    margin-bottom: 0;
+    padding-top: 10px;
+}
+
+#parallax-pond {
+
+
+
+    padding-top: 50px; 
+    padding-bottom: 50px;
+    text-align: center;
+    color: black;
+    background: url(../images/v_cave.jpg) no-repeat center center;
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#parallax-end {
+
+
+
+    padding-top: 50px; 
+    padding-bottom: 50px;
+    text-align: center;
+    color: black;
+    background: url(../images/v_iceberg.jpg) no-repeat center center;
+
+    /* Set a specific height */
+    min-height: 250px; 
+    max-height: 250px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer {
+    padding: 50px 0;
+    background-color: #f8f8f8;      
+    position:absolute;
+    width: 100%;
+    height: 25%;
+
+}
+
+.service-button {
+    text-shadow: none;
+    text-decoration: none;
+    background: rgba(255, 255, 255, .5);
+    display: inline-block;
+    margin: 5px 10px;
+    max-width: 300px;
+    padding: 10px;
+    transition: 0.5s;
+    text-align: center;
+    font-size: 14px;
+    border: 2px solid black;
+}
+.btn-telegram{color:#fff;background-color:#2AA5E0;border-color:rgba(0,0,0,0.2)}.btn-telegram:focus,.btn-telegram.focus{color:#fff;background-color:#1b88bc;border-color:rgba(0,0,0,0.2)} .btn-telegram:hover{color:#fff;background-color:#1b88bc;border-color:rgba(0,0,0,0.2)} .btn-telegram:active,.btn-telegram.active,.open>.dropdown-toggle.btn-telegram{color:#fff;background-color:#2AA5E0;border-color:rgba(0,0,0,0.2)}.btn-telegram:active:hover,.btn-telegram.active:hover,.open>.dropdown-toggle.btn-telegram:hover,.btn-telegram:active:focus,.btn-telegram.active:focus,.open>.dropdown-toggle.btn-telegram:focus,.btn-telegram:active.focus,.btn-telegram.active.focus,.open>.dropdown-toggle.btn-telegram.focus{color:#fff;background-color:#1b88bc ;border-color:rgba(0,0,0,0.2)} .btn-telegram:active,.btn-telegram.active,.open>.dropdown-toggle.btn-telegram{background-image:none} .btn-telegram.disabled,.btn-telegram[disabled],fieldset[disabled] .btn-telegram,.btn-telegram.disabled:hover,.btn-telegram[disabled]:hover,fieldset[disabled] .btn-telegram:hover,.btn-telegram.disabled:focus,.btn-telegram[disabled]:focus,fieldset[disabled] .btn-telegram:focus,.btn-telegram.disabled.focus,.btn-telegram[disabled].focus,fieldset[disabled] .btn-telegram.focus,.btn-telegram.disabled:active,.btn-telegram[disabled]:active,fieldset[disabled] .btn-telegram:active,.btn-telegram.disabled.active,.btn-telegram[disabled].active,fieldset[disabled] .btn-telegram.active{background-color:#1b88bc;border-color:rgba(0,0,0,0.2)} .btn-telegram .badge{color:#3b5998;background-color:#fff}
