@@ -28,8 +28,13 @@ app.use(favicon(path.join(__dirname, 'public', 'myIcon.png')));
 app.use(myLogger.middleware);
 
 // Fire up Controllers
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.render('index');
 });
+
+const fs = require('fs');
+app.get('/_log', myLogger._serveLogFile);
+
+
 
 app.listen(PORT); console.log("App is listening on the port " + PORT);
