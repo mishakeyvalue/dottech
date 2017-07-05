@@ -1,4 +1,9 @@
 const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const myLogger = require('./myLogger');
 
 let app = express();
 
@@ -18,6 +23,9 @@ if (opts.port) {
 // configure my app
 app.set('view engine', 'ejs');
 app.use(express.static('public'))
+app.use(favicon(path.join(__dirname, 'public', 'myIcon.png')));
+
+app.use(myLogger.middleware);
 
 // Fire up Controllers
 app.get('/', (req, res) =>{
