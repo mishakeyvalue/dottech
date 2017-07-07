@@ -7,6 +7,9 @@ const myLogger = require('../myLogger');
 
 router.use(myLogger.middleware);
 
+router.get('*', function(request, response) {
+    response.sendfile('./public/index.html');
+});
 
 router.get('/', (req, res) => {
     res.render('index');
