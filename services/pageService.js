@@ -21,6 +21,4 @@ const pageService = {
     }
 };
 
-pageService.add("MyTitle", "hey-hey", "This is my encoded content");
-
 module.exports = pageService;

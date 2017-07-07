@@ -25,9 +25,10 @@ app.use(express.static('public'))
 app.use(favicon(path.join(__dirname, 'public', 'myIcon.png')));
 
 // Fire up Controllers
+const apiController = require('./controllers/apiController');
 const homeController = require('./controllers/homeController');
-homeController(app);
 
-
+app.use('/api', apiController);
+app.use('/', homeController);
 
 app.listen(PORT); console.log("App is listening on the port " + PORT);
