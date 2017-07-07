@@ -60,3 +60,5 @@ typings/
 
 _connectionString.txt
 myLog\.txt
+
+data/_cs\.txt
