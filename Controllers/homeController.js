@@ -1,13 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const bodyParser = require('body-parser');
 const fs = require('fs');
 const myLogger = require('../myLogger');
-
-const pageService = require('../services/pageService');
-
-let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 
 router.use(myLogger.middleware);
