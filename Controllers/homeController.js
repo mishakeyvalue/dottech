@@ -7,6 +7,7 @@ const myLogger = require('../myLogger');
 
 router.use(myLogger.middleware);
 
+
 router.get('/', (req, res) => {
     res.render('index');
 });

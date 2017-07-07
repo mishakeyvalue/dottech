@@ -25,6 +25,9 @@ app.use(express.static('public'))
 app.use(favicon(path.join(__dirname, 'public', 'myIcon.png')));
 
 // Fire up Controllers
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 const apiController = require('./controllers/apiController');
 const homeController = require('./controllers/homeController');
 

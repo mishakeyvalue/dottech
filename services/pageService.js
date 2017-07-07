@@ -2,38 +2,39 @@ const db = require('../data/mongoRepository');
 const Page = require('../models/page');
 
 const pageService = {
+    /**
+     * 
+     * @param {*string} title 
+     * @param {*string} url 
+     * @param {*string} content 
+     * @param {*number} menuIndex 
+     */
+    add:
+    function (title, url, content, menuIndex, cb) {
+        var page = new Page({
+            title: title,
+            url: url,
+            content: content,
+            menuIndex: menuIndex,
+            date: new Date(Date.now())
+        });
 
-    getAll: getAll_F,
+        page.save((err) => {
+            cb(err, page);
+        })
+    },
 
-    add: add_F
+    /**
+     * 
+     * @param {*function} cb 
+     */
+    getAll: function (cb) {
+        Page.find(cb);
+    }
 };
 
-/**
- * 
- * @param {*string} title 
- * @param {*string} url 
- * @param {*string} content 
- * @param {*number} menuIndex 
- */
-function add_F(title, url, content, menuIndex) {
-    var page = new Page({
-        title: title,
-        url: url,
-        content: content,
-        menuIndex: menuIndex,
-        date: new Date(Date.now())
-    });
+;
 
-    page.save((err) => {
-        if (err) throw err;
-    })
-};
 
-/**
- * 
- * @param {*function} cb 
- */
-function getAll_F(cb) {
-    Page.find(cb);
-}
+
 module.exports = pageService;
