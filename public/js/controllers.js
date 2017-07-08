@@ -4,7 +4,7 @@
 let controllers = {};
 
 controllers.RootLoginCtrl = function () {
-
+  
 };
 
 controllers.RootPagesCtrl = function () {

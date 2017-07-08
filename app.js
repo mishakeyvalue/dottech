@@ -3,6 +3,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+
 
 let app = express();
 
@@ -21,6 +23,11 @@ if (opts.port) {
 
 // configure my app
 app.set('view engine', 'ejs');
+
+app.use(cookieParser('secret'));
+
+app.use (session());
+
 app.use(express.static('public'))
 app.use(favicon(path.join(__dirname, 'public', 'myIcon.png')));
 
@@ -28,7 +35,6 @@ app.use(favicon(path.join(__dirname, 'public', 'myIcon.png')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(cookieParser('secret'));
 
 const apiController = require('./controllers/apiController');
 const homeController = require('./controllers/homeController');
