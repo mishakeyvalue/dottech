@@ -6,6 +6,8 @@ const pageService = require('../services/pageService');
 const bodyParser = require('body-parser');
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+const myLogger = require('../myLogger');
+
 router.get('/', function (req, res) {
     res.end('Welcome to the api zone!');
 });
@@ -33,6 +35,11 @@ router.post('/pages', function (req, res) {
         });
 });
 
+router.get('/root/_log', function(req,res){
+    myLogger.getLogFile(function(data){
+        res.end(data);
+    });
+});
 
 
 module.exports = router;

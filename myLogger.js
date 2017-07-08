@@ -4,12 +4,12 @@ const LOG_FILE_NAME = 'myLog.txt';
 const myLogger = {
     middleware: middleware,
     log: log,
-    _serveLogFile: (req, res) => {
+    getLogFile: (cb) => {
         fs.readFile(LOG_FILE_NAME, 'utf8', function (err, data) {
             if (err) {
-                res.end(err);
+                cb(err);
             }
-            res.end(data);
+            cb(data);
         });
     }
 };
