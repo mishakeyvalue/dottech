@@ -21,12 +21,13 @@
   },
   "homepage": "https://github.com/mitutee/node_Panel#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
+    "mongoose": "^4.11.1",
     "optimist": "^0.6.1",
     "serve-favicon": "^2.4.3"
-    "mongoose": "^4.11.1"
   }
 }
