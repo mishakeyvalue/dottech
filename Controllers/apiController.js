@@ -28,6 +28,16 @@ router.get('/pages', function (req, res) {
     });
 });
 
+router.get('/pages/:id', function (req, res) {
+    let id = req.params.id
+    pageService.get(id,function (err, page) {
+        if (err) res.send(500, err);
+        else {
+            res.send(page);
+        }
+    });
+});
+
 router.post('/pages', function (req, res) {
     pageService.add(req.body.title,
         req.body.url,

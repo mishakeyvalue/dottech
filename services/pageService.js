@@ -30,6 +30,9 @@ const pageService = {
      */
     getAll: function (cb) {
         Page.find(cb);
+    },
+    get: function(id, cb){
+        Page.findOne({_id: id}, cb);
     }
 };
 
