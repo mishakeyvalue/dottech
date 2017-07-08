@@ -1,34 +1,50 @@
 const fs = require('fs');
 var bcrypt = require('bcrypt-nodejs');
 
-const CR_FILE = "./data/_cr.json";
+const CREDENTIALS_FILE = "./data/_cr.json";
 
-var opts = require('optimist').options({
+function setupCredentials() {
+    var opts = require('optimist').options({
         login: {
             demand: true,
             alias: 'l',
-            description: 'port to listen to'
+            description: 'your login'
         },
         pass: {
             demand: true,
-            alias: 'p'
+            alias: 'p',
+            description: 'your password'
         }
     }).boolean('allow_discovery').argv;
 
-let salt = bcrypt.genSaltSync(144);
+    let salt = bcrypt.genSaltSync(144);
 
-let passHash = bcrypt.hashSync(opts.pass, salt);
+    let passHash = bcrypt.hashSync(opts.pass, salt);
 
-let authModel = {
-    login: opts.login,
-    pass: passHash
+    let authModel = {
+        login: opts.login,
+        pass: passHash
+    };
+
+    fs.writeFileSync(CREDENTIALS_FILE, JSON.stringify(authModel));
+}
+
+function getCredentials(){
+    return JSON.parse(fs.readFileSync(CREDENTIALS_FILE));
+}
+
+if (require.main == module){
+    setupCredentials();
 };
-
-fs.writeFileSync(CR_FILE, JSON.stringify(authModel));
 
 
 module.exports = {
-    CR_FILE: CR_FILE
+    CREDENTIALS_FILE: CREDENTIALS_FILE,
+    isValidCredentials: function (login, pass) {
+        let actualCredentials = getCredentials();
+        return login == actualCredentials.login 
+            && bcrypt.compareSync(pass, actualCredentials.pass);
+    }
 }
 
 
