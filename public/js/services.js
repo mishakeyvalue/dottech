@@ -23,10 +23,10 @@ angular.module('myApp.services', [])
 })
 .service('authService', function($http){
   this.login = function(credentials){
-    return $http.post('/api/login', credentials);
+    return $http.post('/api/root/login', credentials);
   };
   this.logout = function(){
-    return $http.get('/api/logout');
+    return $http.get('/api/root/logout');
   };
 })
 ;

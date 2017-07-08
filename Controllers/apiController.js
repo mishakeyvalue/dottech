@@ -59,6 +59,7 @@ router.post('/root/login', function (req, res) {
             return res.send(username);
         })
     }
+    else res.send(401, 'Wrong credentials, young man!')
 });
 
 module.exports = router;
