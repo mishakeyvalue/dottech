@@ -10,7 +10,7 @@ angular.module('myApp.services', [])
 .service('pagesService', function($http){
 
   this.getPages = function() {
-
+    return $http.get('/api/pages')
   };
 
 
@@ -20,4 +20,13 @@ angular.module('myApp.services', [])
   this.getLog = function(){
     return $http.get('/api/root/_log')
   };
-});
+})
+.service('authService', function($http){
+  this.login = function(credentials){
+    return $http.post('/api/login', credentials);
+  };
+  this.logout = function(){
+    return $http.get('/api/logout');
+  };
+})
+;
