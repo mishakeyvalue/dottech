@@ -27,6 +27,10 @@ angular.module('myApp.services', [])
             } else return $http.put('/api/pages', pageData);
         };
 
+        this.deletePage = function(id){
+            return $http.delete('/api/pages/' + id);
+        }
+
 
     })
     .service('rootService', function ($http) {

@@ -19,12 +19,23 @@ controllers.RootLoginCtrl = function ($scope, $location, $cookies, authService, 
 };
 
 controllers.RootPagesCtrl = function ($scope, pagesService, flashMessageService) {
-    flashMessageService.setMessage('Hello')
+    flashMessageService.setMessage('Hello');
+
     pagesService.getPages().then(function (res) {
         $scope.allPages = res.data;
     }, function (err) {
         throw err;
-    })
+    });
+
+    $scope.deletePage = function (id) {
+
+        pagesService.deletePage(id).then(function (res) {
+            $scope.allPages = res.data;
+        }),
+            function (err) {
+                flashMessageService.setMessage("Error in deleting: " + err);
+            }
+    }
 };
 
 controllers.RootEditPageCtrl = function ($scope,

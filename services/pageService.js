@@ -33,7 +33,11 @@ const pageService = {
     },
     get: function(id, cb){
         Page.findOne({_id: id}, cb);
+    },
+    delete: function(id, cb){
+        Page.remove({_id: id}, cb);
     }
+    
 };
 
 ;
