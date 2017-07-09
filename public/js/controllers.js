@@ -39,6 +39,20 @@ controllers.RootLoginCtrl = function ($scope, $location, $cookies, authService, 
     }
 };
 
+controllers.HomeCtrl = function ($scope, pagesService, flashMessageService, $sce) {
+    $scope.allPages = [];
+    pagesService.getPages().then(function (res) {
+        let arrOfPages = res.data;
+        for(let i = 0; i < arrOfPages.length; i++){
+            arrOfPages[i].content = $sce.trustAsHtml(arrOfPages[i].content);
+        }
+        $scope.allPages = arrOfPages;
+    }, function (err) {
+        throw err;
+    });
+
+};
+
 controllers.RootPagesCtrl = function ($scope, pagesService, flashMessageService) {
     flashMessageService.setMessage('Hello');
 

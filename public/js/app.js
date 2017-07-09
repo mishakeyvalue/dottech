@@ -13,6 +13,11 @@ angular.module('myApp', [
     'message-flash'
 ])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider.when('/home', {
+            templateUrl: 'partials/home.html',
+            controller: 'HomeCtrl'
+        });
+
         // root
         $routeProvider.when('/root/login', {
             templateUrl: 'partials/root/login.html',
@@ -36,9 +41,10 @@ angular.module('myApp', [
             controller: 'PageCtrl'
         });
 
+
         $routeProvider.when('/view1', { templateUrl: 'partials/partial1.html', controller: 'MyCtrl1' });
         $routeProvider.when('/view2', { templateUrl: 'partials/partial2.html', controller: 'MyCtrl2' });
-        $routeProvider.otherwise({ redirectTo: '/' });
+        $routeProvider.otherwise({ redirectTo: '/home' });
 
         $locationProvider.html5Mode(true);
     }])
