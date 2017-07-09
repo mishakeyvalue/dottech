@@ -28,9 +28,19 @@ router.get('/pages', function (req, res) {
     });
 });
 
-router.get('/pages/:id', function (req, res) {
+router.get('/pages/details/:id',authCheck, function (req, res) {
     let id = req.params.id
     pageService.get(id, function (err, page) {
+        if (err) res.send(500, err);
+        else {
+            res.send(page);
+        }
+    });
+});
+
+router.get('/pages/:url', function (req, res) {
+    let url = req.params.url
+    pageService.getByUrl(url, function (err, page) {
         if (err) res.send(500, err);
         else {
             res.send(page);

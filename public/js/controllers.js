@@ -3,6 +3,27 @@
 /* Controllers */
 let controllers = {};
 
+controllers.AppCtrl = function($scope, authService, flashMessageService, $location, $log){
+    $scope.site = {
+        logo: "img/myLogo.jpg",
+        footer: "mitutee, 2017"
+    }
+};
+
+controllers.PageCtrl = function($scope, pagesService, $routeParams, $sce){
+    let url = $routeParams.url;
+    $scope.pageContent = {};
+    pagesService.getPage(url).then(
+        function(res){
+            $scope.pageContent.title = res.data.title;
+            $scope.pageContent.content = $sce.trustAsHtml(res.data.content);
+        },
+        function(err){
+            $log.log(err);
+        }
+    )
+};
+
 controllers.RootLoginCtrl = function ($scope, $location, $cookies, authService, flashMessageService) {
     $scope.credentials = {
         username: 'mitutee',

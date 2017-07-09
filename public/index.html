@@ -10,11 +10,18 @@
     <link rel="stylesheet" href="css/app.css" />
 </head>
 
-<body>
+<body ng-controller="AppCtrl">
+    <div admin-login class="col-md-3 pull-right"></div>
     <div class="container container-fluid">
-        <div message-flash> </div>
-
-        <div ng-view></div>
+        <header>
+            <img width="150" ng-src="{{site.logo}}">
+        </header>
+        <div message-flash></div>
+        <div class="row">
+            <div class="col-md-3" nav-bar></div>
+            <div class="col-md-6" ng-view></div>
+        </div>
+        <footer>{{site.footer}}</footer>
     </div>
 
     <script src="bower_components/angular/angular.js"></script>

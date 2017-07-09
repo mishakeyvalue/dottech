@@ -18,7 +18,7 @@ angular.module('myApp.services', [])
         };
 
         this.getPage_AsRoot = function (id) {
-            return $http.get('/api/pages/' + id);
+            return $http.get('/api/pages/details/' + id);
         };
 
         this.savePage = function (pageData) {

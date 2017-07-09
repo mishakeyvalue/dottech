@@ -34,9 +34,12 @@ const pageService = {
     get: function(id, cb){
         Page.findOne({_id: id}, cb);
     },
+    getByUrl: function(url, cb){
+        Page.findOne({url: url}, cb);
+    },
     delete: function(id, cb){
         Page.remove({_id: id}, cb);
-    }
+    },  
     
 };
 
