@@ -15,7 +15,7 @@ function authCheck(req, res, next) {
     else res.send(401, 'authorization failed');
 };
 
-router.get('/', authCheck, function (req, res) {
+router.get('/', function (req, res) {
     res.end('Welcome to the api zone!');
 });
 
@@ -53,7 +53,7 @@ router.delete('/pages/:id', authCheck, function (req, res) {
     })
 })
 
-router.post('/pages', function (req, res) {
+router.post('/pages', authCheck, function (req, res) {
     pageService.add(req.body.title,
         req.body.url,
         req.body.content,

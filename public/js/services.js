@@ -13,21 +13,21 @@ angular.module('myApp.services', [])
             return $http.get('/api/pages')
         };
 
-        this.getPage = function(uri){
+        this.getPage = function (uri) {
             return $http.get('/api/pages/' + uri);
         };
 
-        this.getPage_AsRoot = function(id){
+        this.getPage_AsRoot = function (id) {
             return $http.get('/api/pages/' + id);
         };
 
-        this.savePage = function(pageData){
-            if(pageData._id == 0){
+        this.savePage = function (pageData) {
+            if (pageData._id == 0) {
                 return $http.post('/api/pages', pageData);
             } else return $http.put('/api/pages', pageData);
         };
 
-        this.deletePage = function(id){
+        this.deletePage = function (id) {
             return $http.delete('/api/pages/' + id);
         }
 
@@ -46,5 +46,22 @@ angular.module('myApp.services', [])
         this.logout = function () {
             return $http.get('/api/root/logout');
         };
+    })
+    .factory('myHttpInterceptor', function ($q, $location) {
+        let factory = {};
+
+        factory.response = function (response) {
+            return response;
+        };
+
+        factory.responseError = function (response) {
+            if (response.status === 401) {
+                $location.path('/root/login');
+                return $q.reject(response);
+            }
+            return $q.reject(response);
+        }
+
+        return factory;
     })
     ;

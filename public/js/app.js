@@ -37,4 +37,7 @@ angular.module('myApp', [
         $routeProvider.otherwise({ redirectTo: '/' });
 
         $locationProvider.html5Mode(true);
-    }]);
+    }])
+    .config(function ($httpProvider) {
+        $httpProvider.interceptors.push('myHttpInterceptor');
+    });
