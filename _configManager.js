@@ -14,19 +14,19 @@ function setup() {
     var opts = require('optimist').options({
         login: {
             demand: true,
-            short: 'l',
+            alias: 'l',
             long: 'login',
             description: 'your login'
         },
         pass: {
             demand: true,
-            short: 'p',
+            alias: 'p',
             long: 'password',
             description: 'your password'
         },
         connectionString: {
             demand: true,
-            short: 'cs',
+            alias: 'c',
             long: 'connectionString',
             description: 'your default DB connection string'
         }
