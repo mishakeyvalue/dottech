@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const myLogger = require('../myLogger');
-const _credentialService = require('../_credentialService');
+const _configManager = require('../_configManager');
 
 
 function authCheck(req, res, next) {
@@ -88,7 +88,7 @@ router.get('/root/_log', authCheck, function (req, res) {
 router.post('/root/login', function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    if (_credentialService.isValidCredentials(username, password)) {
+    if (_configManager.isValidCredentials(username, password)) {
         req.session.regenerate(function () {
             req.session.user = username;
             return res.send(username);
