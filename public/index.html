@@ -19,12 +19,12 @@
             <img width="150" ng-src="{{site.logo}}">
         </header>
         <div message-flash></div>
-            <div class="col-md-12" nav-bar></div>
+        <div class="col-md-12" nav-bar></div>
         
         <div class="row">
             <div class="col-md-12" ng-view></div>
         </div>
-        <footer>{{site.footer}}</footer>
+        <footer></footer>
     </div>
 
     <!--Footer-->
@@ -108,7 +108,7 @@
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-                © 2015 Copyright: <a href="http://www.MDBootstrap.com"> MDBootstrap.com </a>
+                {{site.footer}}
 
             </div>
         </div>
