@@ -27,6 +27,9 @@ angular.module('myApp', [
             templateUrl: 'partials/root/pages.html',
             controller: 'RootPagesCtrl'
         });
+
+        $routeProvider.when('/root', { redirectTo:'/root/pages' })
+
         $routeProvider.when('/root/pages/edit/:id', {
             templateUrl: 'partials/root/edit.html',
             controller: 'RootEditPageCtrl'
@@ -41,9 +44,6 @@ angular.module('myApp', [
             controller: 'PageCtrl'
         });
 
-
-        $routeProvider.when('/view1', { templateUrl: 'partials/partial1.html', controller: 'MyCtrl1' });
-        $routeProvider.when('/view2', { templateUrl: 'partials/partial2.html', controller: 'MyCtrl2' });
         $routeProvider.otherwise({ redirectTo: '/home' });
 
         $locationProvider.html5Mode(true);

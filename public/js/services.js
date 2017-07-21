@@ -13,6 +13,10 @@ angular.module('myApp.services', [])
             return $http.get('/api/pages')
         };
 
+        this.getDetailedPages = function () {
+            return $http.get('/api/pages/details')
+        };
+
         this.getPage = function (uri) {
             return $http.get('/api/pages/' + uri);
         };

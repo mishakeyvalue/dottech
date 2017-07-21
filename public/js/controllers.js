@@ -48,7 +48,7 @@ controllers.RootLoginCtrl = function ($scope, $location, $cookies, authService, 
         username: 'mitutee',
         password: 'q1w2e3r4'
     };
-    
+
     $scope.login = function (credentials) {
         authService.login(credentials).then(function (res) {
             $cookies.loggedInUser = res.data;
@@ -62,7 +62,7 @@ controllers.RootLoginCtrl = function ($scope, $location, $cookies, authService, 
 controllers.RootPagesCtrl = function ($scope, pagesService, flashMessageService) {
     flashMessageService.setMessage('Hello');
 
-    pagesService.getPages().then(function (res) {
+    pagesService.getDetailedPages().then(function (res) {
         $scope.allPages = res.data;
     }, function (err) {
         throw err;

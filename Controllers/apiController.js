@@ -12,7 +12,7 @@ const _configManager = require('../_configManager');
 
 function authCheck(req, res, next) {
     if (req.session.user) next();
-    else res.send(401, 'authorization failed');
+    else res.send(401, 'authorization failed :(');
 };
 
 router.get('/', function (req, res) {
@@ -20,6 +20,15 @@ router.get('/', function (req, res) {
 });
 
 router.get('/pages', function (req, res) {
+    pageService.getAll(function (err, pages) {
+        if (err) res.send(500, err);
+        else {
+            res.send(pages);
+        }
+    });
+});
+
+router.get('/pages/details', authCheck, function (req, res) {
     pageService.getAll(function (err, pages) {
         if (err) res.send(500, err);
         else {
