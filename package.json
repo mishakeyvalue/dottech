@@ -4,6 +4,7 @@
   "description": "my landing page",
   "main": "app.js",
   "scripts": {
+    "start": "node_modules/.bin/webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "express-session": "^1.15.3",
     "mongoose": "^4.11.1",
     "optimist": "^0.6.1",
-    "serve-favicon": "^2.4.3"
+    "serve-favicon": "^2.4.3",
+    "webpack": "^3.3.0"
   }
 }
