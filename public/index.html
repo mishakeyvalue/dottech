@@ -13,48 +13,53 @@
 </head>
 
 <body ng-controller="AppCtrl">
-    <div admin-login class="col-md-3 pull-right"></div>
-
-    <div class="container container-fluid">
-        <header>
-
-        </header>
-        <div message-flash></div>
-        <div class="col-md-12" nav-bar></div>
-        
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12" ng-view></div>
+            <div class="col-md-12" nav-bar-dir></div>
+            <div class="col-md-12" header-dir></div>
+            <div admin-login class="col-md-3 pull-right"></div>
         </div>
+
+        <div class="row">
+            <div message-flash></div>
+            <div class="col-md-12" ng-view></div>
+
+        </div>
+
+        <!--Footer-->
+        <div class="row">
+            
+            <footer class="page-footer center-on-small-only col-lg-12">
+                <hr>
+                <!--Call to action-->
+                <div class="call-to-action">
+                    <h4>Material Design for Bootstrap</h4>
+                    <ul>
+                        <li>
+                            <h5>Get our UI KIT for free</h5>
+                        </li>
+                        <li><a target="_blank" href="http://mdbootstrap.com/getting-started/" class="btn btn-info" rel="nofollow">Sign up!</a></li>
+                        <li><a target="_blank" href="http://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default"
+                                rel="nofollow">Learn more</a></li>
+                    </ul>
+                </div>
+                <!--/.Call to action-->
+
+                <!--Copyright-->
+                <div class="footer-copyright">
+                    <div class="container-fluid">
+                        {{site.footer}}
+
+                    </div>
+                </div>
+                <!--/.Copyright-->
+
+            </footer>
+        </div>
+
+        <!--Footer-->
     </div>
 
-    <!--Footer-->
-    <footer class="page-footer center-on-small-only">
-        <hr>
-        <!--Call to action-->
-        <div class="call-to-action">
-            <h4>Material Design for Bootstrap</h4>
-            <ul>
-                <li>
-                    <h5>Get our UI KIT for free</h5>
-                </li>
-                <li><a target="_blank" href="http://mdbootstrap.com/getting-started/" class="btn btn-info" rel="nofollow">Sign up!</a></li>
-                <li><a target="_blank" href="http://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default" rel="nofollow">Learn more</a></li>
-            </ul>
-        </div>
-        <!--/.Call to action-->
-
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <div class="container-fluid">
-                {{site.footer}}
-
-            </div>
-        </div>
-        <!--/.Copyright-->
-
-    </footer>
-    <!--Footer-->
-    
     <script type="text/javascript" src="bower_components/MDBootstrap/js/jquery-2.2.3.min.js"></script>
 
 
@@ -77,8 +82,8 @@
     <script src="bower_components/MDBootstrap/js/mdb.min.js"></script>
 
 
-   <script>
-    new WOW().init();
+    <script>
+        new WOW().init();
     </script>
 
     <script src="js/my.js"></script>

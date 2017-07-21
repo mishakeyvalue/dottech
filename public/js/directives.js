@@ -9,7 +9,7 @@ angular.module('myApp.directives', [])
             elm.text(version);
         };
     }])
-.directive('navBar', function () {
+.directive('navBarDir', function () {
     let directive = {};
 
     directive.controller = function ($scope, pagesService, $location, $log) {
@@ -37,7 +37,18 @@ angular.module('myApp.directives', [])
     directive.templateUrl = 'partials/directives/nav.html';
 
     return directive;
-});
+})
+.directive('headerDir', function(){
+        let directive = {};
+
+    directive.controller = function () {
+    };
+
+    directive.templateUrl = 'partials/directives/header.html';
+
+    return directive;
+})
+
 
 
 /**
