@@ -48,6 +48,7 @@ controllers.RootLoginCtrl = function ($scope, $location, $cookies, authService, 
         username: 'mitutee',
         password: 'q1w2e3r4'
     };
+    
     $scope.login = function (credentials) {
         authService.login(credentials).then(function (res) {
             $cookies.loggedInUser = res.data;
