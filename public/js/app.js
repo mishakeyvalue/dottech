@@ -21,7 +21,7 @@ angular.module('myApp', [
         // root
         $routeProvider.when('/root/login', {
             templateUrl: 'partials/root/login.html',
-            controller: 'RootLoginCtrl'
+            controller: 'rootLoginCtrl'
         });
         $routeProvider.when('/root/pages', {
             templateUrl: 'partials/root/pages.html',

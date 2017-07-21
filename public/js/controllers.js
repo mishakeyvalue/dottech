@@ -3,13 +3,6 @@
 /* Controllers */
 let controllers = {};
 
-controllers.AppCtrl = function($scope, authService, flashMessageService, $location, $log){
-    $scope.site = {
-        logo: "img/myLogo.jpg",
-        footer: "mitutee, 2017"
-    }
-};
-
 controllers.PageCtrl = function($scope, pagesService, $routeParams, $sce){
     let url = $routeParams.url;
     $scope.pageContent = {};
@@ -43,21 +36,7 @@ controllers.HomeCtrl = function ($scope, pagesService, flashMessageService, $sce
 
 /******ROOT CONTROLLERS */
 
-controllers.RootLoginCtrl = function ($scope, $location, $cookies, authService, flashMessageService) {
-    $scope.credentials = {
-        username: 'mitutee',
-        password: 'q1w2e3r4'
-    };
 
-    $scope.login = function (credentials) {
-        authService.login(credentials).then(function (res) {
-            $cookies.loggedInUser = res.data;
-            $location.path('/root/pages');
-        }, function (err) {
-            flashMessageService.setMessage(err);
-        })
-    }
-};
 
 controllers.RootPagesCtrl = function ($scope, pagesService, flashMessageService) {
     flashMessageService.setMessage('Hello');
