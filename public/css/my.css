@@ -165,3 +165,9 @@ buttons {
 #sidedrawer strong + ul > li {
   padding: 6px 0px;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
