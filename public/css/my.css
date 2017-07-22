@@ -12,7 +12,12 @@ footer {
     bottom: 0;
     width: 100%;
 }
-.my-header {
-    width: 100%;
+#my-header {
     background-color: #4CAF50;
+    height: 22vh;
+}
+
+#my-footer {
+    background-color: #4CAF50;
+
 }
