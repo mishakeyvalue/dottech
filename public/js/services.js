@@ -48,6 +48,7 @@ angular.module('myApp.services', [])
                 return cachedPage;             
             }
             catch (err) {
+                return {};
                 console.log(err);
             }
             
