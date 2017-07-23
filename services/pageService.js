@@ -9,8 +9,7 @@ const pageService = {
      * @param {*string} content 
      * @param {*number} menuIndex 
      */
-    add:
-    function (title, url, content, menuIndex, cb) {
+    add: function (title, url, content, menuIndex, cb) {
         var page = new Page({
             title: title,
             url: url,

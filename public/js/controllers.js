@@ -65,7 +65,8 @@ controllers.RootPagesCtrl = function ($scope, pagesService, flashMessageService)
     pagesService.getDetailedPages().then(function (res) {
         $scope.allPages = res.data;
     }, function (err) {
-        throw err;
+        flashMessageService.setMessage('Err!')
+        console.log(err);
     });
 
     $scope.deletePage = function (id) {
@@ -113,6 +114,7 @@ controllers.RootEditPageCtrl = function ($scope,
     }
     else {
         $scope.pageContent = pagesService.getPageCache();
+        $scope.pageContent._id = 0;        
     }
 
     $scope.savePage = function () {

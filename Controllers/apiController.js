@@ -4,7 +4,7 @@ const router = express.Router();
 const pageService = require('../services/pageService');
 
 const bodyParser = require('body-parser');
-let urlencodedParser = bodyParser.urlencoded({ extended: false });
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const myLogger = require('../myLogger');
 const _configManager = require('../_configManager');
@@ -30,14 +30,16 @@ router.get('/pages', function (req, res) {
 
 router.get('/pages/details', authCheck, function (req, res) {
     pageService.getAll(function (err, pages) {
-        if (err) res.send(500, err);
-        else {
+        if (err) {
+            res.send(500, err);
+            myLogger.log('Error!' + JSON.stringify(err));
+        } else {
             res.send(pages);
         }
     });
 });
 
-router.get('/pages/details/:id',authCheck, function (req, res) {
+router.get('/pages/details/:id', authCheck, function (req, res) {
     let id = req.params.id
     pageService.get(id, function (err, page) {
         if (err) res.send(500, err);
