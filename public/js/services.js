@@ -37,13 +37,20 @@ angular.module('myApp.services', [])
         };
 
         this.setPageCache = function(page){
-            console.log(JSON.stringify(page))
-            window.localStorage[PAGE_CACHE_KEY] = JSON.stringify(page); 
+            let pageForCache = JSON.stringify(page);
+            console.log(pageForCache)
+            window.localStorage[PAGE_CACHE_KEY] = pageForCache; 
         }; 
  
-        this.getPageCache = function() { 
-            return JSON.parse(window.localStorage[PAGE_CACHE_KEY]); 
-            //return 
+        this.getPageCache = function() {
+            try{
+                let cachedPage = JSON.parse(window.localStorage[PAGE_CACHE_KEY]);
+                return cachedPage;             
+            }
+            catch (err) {
+                console.log(err);
+            }
+            
         };
     })
     .service('rootService', function ($http) {
