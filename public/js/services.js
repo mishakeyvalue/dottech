@@ -2,6 +2,7 @@
 
 /* Services */
 
+const PAGE_CACHE_KEY = "_pageCache"; 
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
@@ -33,9 +34,17 @@ angular.module('myApp.services', [])
 
         this.deletePage = function (id) {
             return $http.delete('/api/pages/' + id);
-        }
+        };
 
-
+        this.setPageCache = function(page){
+            console.log(JSON.stringify(page))
+            window.localStorage[PAGE_CACHE_KEY] = JSON.stringify(page); 
+        }; 
+ 
+        this.getPageCache = function() { 
+            return JSON.parse(window.localStorage[PAGE_CACHE_KEY]); 
+            //return 
+        };
     })
     .service('rootService', function ($http) {
 

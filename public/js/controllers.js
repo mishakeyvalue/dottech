@@ -93,6 +93,10 @@ controllers.RootEditPageCtrl = function ($scope,
         $scope.pageContent.url = $filter('formatURL')($scope.pageContent.title);
     };
 
+    $scope.cacheBeingEditedPage = function() {
+        pagesService.setPageCache($scope.pageContent);
+    };
+
     if ($scope.pageContent._id != 0) {
         $scope.heading = "Update page";
 
@@ -102,9 +106,13 @@ controllers.RootEditPageCtrl = function ($scope,
                 $log.info($scope.pageContent);
             },
             function (err) {
-                flashMessageService.setMessage(err.data);
+                flashMessageService.setMessage(err);
+                console.log(err);
             }
         );
+    }
+    else {
+        $scope.pageContent = pagesService.getPageCache();
     }
 
     $scope.savePage = function () {
@@ -114,7 +122,8 @@ controllers.RootEditPageCtrl = function ($scope,
                 $location.path('/root/pages');
             },
             function (err) {
-                flashMessageService.setMessage("Page Saved Successfully");
+                flashMessageService.setMessage("Error! See console.");
+                console.log(err);
             }
         )
     }
@@ -130,6 +139,5 @@ controllers.RootLogCtrl = function ($scope, rootService) {
     });
 };
 /******ROOT */
-
 
 angular.module('myApp.controllers', []).controller(controllers)
