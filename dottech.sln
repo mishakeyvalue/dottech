@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dottech", "dottech.web\dottech.csproj", "{5CE9F1A6-338A-4487-903C-5230E6C1EA82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dottech.web", "dottech.web\dottech.web.csproj", "{5CE9F1A6-338A-4487-903C-5230E6C1EA82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
