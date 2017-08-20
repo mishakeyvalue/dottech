@@ -3,6 +3,8 @@ import { assert } from 'chai';
 import { ThoughtBackofficeComponent } from './thought-backoffice.component';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 
+import { N_OF_THOUGHTS_ID } from '../../shared/constants/ids';
+
 let fixture: ComponentFixture<ThoughtBackofficeComponent>;
 
 describe('Thought backoffice component', () => {
@@ -18,17 +20,32 @@ describe('Thought backoffice component', () => {
         expect(btnsContent).toContain('create')
     }));
 
-    it('should start with count 0, then increments by 1 when clicked', async(() => {
-        const countElement = fixture.nativeElement.querySelector('strong');
-        expect(countElement.textContent).toEqual('0');
+    it('should increment number of created thoughts when one is created', async(() => {
+        // arrange
+        const initialNumberOfPosts: number = getNumberOfPosts(fixture);
 
-        const incrementButton = fixture.nativeElement.querySelector('button');
-        incrementButton.click();
+        // act
+        addNewThought(fixture);
         fixture.detectChanges();
-        expect(countElement.textContent).toEqual('1');
+        const resultNumberOfPosts: number = getNumberOfPosts(fixture);
+
+        // assert
+        expect(initialNumberOfPosts).toEqual(resultNumberOfPosts - 1);
+
     }));
 });
 
+
 function convertNodeListToArray(list: NodeList):any[] {
     return Array.from(list);
+}
+
+function getNumberOfPosts(fixture: ComponentFixture<ThoughtBackofficeComponent>): number {
+    let container = fixture.nativeElement.querySelector('#' + N_OF_THOUGHTS_ID);
+    let n = parseInt(container.textContent);
+    return n;
+}
+
+function addNewThought(fixture: ComponentFixture<ThoughtBackofficeComponent>): void {
+
 }
