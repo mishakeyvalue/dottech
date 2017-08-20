@@ -25,14 +25,15 @@ import { UserService } from './shared/user.service';
 import { ConnectionResolver } from './shared/route.resolver';
 import { ORIGIN_URL } from './shared/constants/baseurl.constants';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
+import { HttpClient } from "@angular/common/http";
 
-export function createTranslateLoader(http: Http, baseHref) {
+export function createTranslateLoader(httpClient: HttpClient, baseHref) {
     // Temporary Azure hack
     if (baseHref === null && typeof window !== 'undefined') {
         baseHref = window.location.origin;
     }
     // i18n files are in `wwwroot/assets/`
-    return new TranslateHttpLoader(http, `${baseHref}/assets/i18n/`, '.json');
+    return new TranslateHttpLoader(httpClient, `${baseHref}/assets/i18n/`, '.json');
 }
 
 @NgModule({

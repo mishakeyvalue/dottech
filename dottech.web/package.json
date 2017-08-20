@@ -13,7 +13,6 @@
     "preset": "jest-preset-angular",
     "setupTestFrameworkScriptFile": "./Client/test/setupJest.ts",
     "globals": {
-      "__TS_CONFIG__": "Client/tsconfig.spec.json",
       "__TRANSFORM_HTML__": true
     },
     "coveragePathIgnorePatterns": [
