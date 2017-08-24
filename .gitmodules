@@ -1,0 +1,3 @@
+[submodule "milab.DAL"]
+	path = milab.DAL
+	url = https://github.com/mitutee/milab.DAL.git
