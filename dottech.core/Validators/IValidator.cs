@@ -1,6 +1,4 @@
-﻿using dottech.core.Models;
-
-namespace dottech.core.Services
+﻿namespace dottech.core.Validators
 {
     public interface IValidator<in T>
     {

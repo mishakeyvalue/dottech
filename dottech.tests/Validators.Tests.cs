@@ -1,9 +1,8 @@
 ﻿using Xunit;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using dottech.core.Validators;
 using dottech.core.Models;
-using dottech.core.Services;
 
 namespace dottech.tests
 {
