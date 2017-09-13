@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using dottech.core.Infrastructure;
+using dottech.core.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using milab.DAL.Providers;
+using milab.DAL.Repositories;
+using System;
 
 namespace dottech.web
 {
@@ -25,6 +30,14 @@ namespace dottech.web
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddSingleton<IConnectionStringProvider>(s => 
+                new DefaultConnectionStringProvider(Configuration.GetConnectionString("mongo"))
+            );
+
+            services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
+            services.AddScoped(typeof(IRepository<,>), typeof(MongoRepository<,>));
+            services.AddScoped<IThoughtService, ThoughtService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +55,7 @@ namespace dottech.web
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles();   
 
             app.UseMvc(routes =>
             {
@@ -50,6 +63,8 @@ namespace dottech.web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            AutomapperInitializer.Initialize();
         }
     }
 }

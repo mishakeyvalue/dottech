@@ -1,0 +1,7 @@
+﻿@model dottech.web.ViewModels.BackofficeRoomViewModel
+
+@foreach(var thought in Model.Thoughts)
+{
+    <h2>@thought.Title</h2>
+    <div>@thought.Body</div>
+}
