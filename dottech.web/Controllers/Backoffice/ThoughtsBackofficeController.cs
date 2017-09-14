@@ -21,6 +21,7 @@ namespace dottech.web.Controllers.Backoffice
             _thoughtService = thoughtService;
         }
 
+        [HttpGet]
         public IActionResult All()
         {
             var thoughts = _thoughtService.GetAll();
@@ -36,6 +37,7 @@ namespace dottech.web.Controllers.Backoffice
             };
         }
 
+        [HttpGet("[action]")]
         public IActionResult Create()
         {
             return View(CreateViewPath);

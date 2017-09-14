@@ -1,3 +1,34 @@
 ﻿@model dottech.web.ViewModels.ThoughtCreateModel
 
-@Html.Be
+    @{ 
+        ViewData["Title"] = "Create thought";
+    }
+   <h2>@ViewData["Title"]</h2>
+<div class="col col-md-12">
+    <form class="form-horizontal" action="Create" method="post">
+        <div class="form-group">
+            <label>Title:</label>
+            <input asp-for="Title" />
+        </div>
+
+        <div class="form-group">
+            <label>Body:</label>
+            <textarea asp-for="Body" id="codemcontrol"></textarea>
+        </div>
+        <input type="submit" class="btn btn-success" value="Post your thought!" />
+    </form>
+
+    @Html.Raw("<h1>Hello!</h1>");
+</div>
+
+<script src="~/lib/CodeMirror/lib/codemirror.js"></script>
+<script src="~/lib/CodeMirror/mode/jade/jade.js"></script>
+
+<script>    
+    var myTextarea = document.querySelector("#codemcontrol");
+    CodeMirror.fromTextArea(myTextarea)
+</script>
+
+<link rel="stylesheet" href="~/lib/CodeMirror/lib/codemirror.css">
+<link rel="stylesheet" href="~/lib/CodeMirror/theme/midnight.css">
+
