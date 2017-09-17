@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <label>Body:</label>
-            <textarea asp-for="Body" id="codemcontrol"></textarea>
+            <textarea id="code" name="code"><html</textarea>
         </div>
         <input type="submit" class="btn btn-success" value="Post your thought!" />
     </form>
@@ -22,13 +22,18 @@
 </div>
 
 <script src="~/lib/CodeMirror/lib/codemirror.js"></script>
-<script src="~/lib/CodeMirror/mode/jade/jade.js"></script>
+<script src="~/lib/CodeMirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="~/lib/CodeMirror/mode/xml/xml.js"></script>
+<script src="~/lib/CodeMirror/mode/javascript/javascript.js"></script>
+<script src="~/lib/CodeMirror/mode/css/css.js"></script>
+<script src="~/lib/CodeMirror/addon/edit/closetag.js"></script>
+<script src="~/lib/CodeMirror/addon/fold/xml-fold.js"></script>
 
-<script>    
-    var myTextarea = document.querySelector("#codemcontrol");
-    CodeMirror.fromTextArea(myTextarea)
+<script type="text/javascript">
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: 'text/html',
+        autoCloseTags: true
+    });
 </script>
-
 <link rel="stylesheet" href="~/lib/CodeMirror/lib/codemirror.css">
-<link rel="stylesheet" href="~/lib/CodeMirror/theme/midnight.css">
 

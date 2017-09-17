@@ -1,3 +1,6 @@
+// CodeMirror, copyright (c) by Marijn Haverbeke and others
+// Distributed under an MIT license: http://codemirror.net/LICENSE
+
 // Depends on csslint.js from https://github.com/stubbornella/csslint
 
 // declare global: CSSLint
@@ -14,6 +17,12 @@
 
 CodeMirror.registerHelper("lint", "css", function(text) {
   var found = [];
+  if (!window.CSSLint) {
+    if (window.console) {
+        window.console.error("Error: window.CSSLint not defined, CodeMirror CSS linting cannot run.");
+    }
+    return found;
+  }
   var results = CSSLint.verify(text), messages = results.messages, message = null;
   for ( var i = 0; i < messages.length; i++) {
     message = messages[i];
