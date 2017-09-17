@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\dottech.core\dottech.core.csproj" />
+    <ProjectReference Include="..\dottech.web\dottech.web.csproj" />
     <ProjectReference Include="..\milab.DAL\milab.DAL.csproj" />
   </ItemGroup>
 

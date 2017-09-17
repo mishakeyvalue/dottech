@@ -9,7 +9,7 @@ namespace dottech.core.Services
         ThoughtModel Create(ThoughtModel thought);
         IEnumerable<ThoughtModel> GetAll();
         ThoughtModel Get(Guid id);
-        ThoughtModel Update(ThoughtModel thought);
+        ThoughtModel Save(ThoughtModel thought);
         void Delete(Guid id);
     }
 }

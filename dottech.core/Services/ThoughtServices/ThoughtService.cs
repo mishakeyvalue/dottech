@@ -32,7 +32,7 @@ namespace dottech.core.Services
             return _thoughtRepository.Get(id).Map<ThoughtModel>();
         }
 
-        public ThoughtModel Update(ThoughtModel thought)
+        public ThoughtModel Save(ThoughtModel thought)
         {
             var entity = thought.Map<ThoughtEntity>();
             ThoughtEntity result = _thoughtRepository.Save(entity);

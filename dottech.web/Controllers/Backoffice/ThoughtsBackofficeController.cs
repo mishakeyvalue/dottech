@@ -12,9 +12,10 @@ namespace dottech.web.Controllers.Backoffice
     public class ThoughtsBackofficeController : Controller
     {
         private readonly string BackofficeRoomViewPath = "~/Views/Backoffice/Room.cshtml";
-        private readonly string CreateViewPath = "~/Views/Backoffice/Create.cshtml";
+        private readonly string EditViewPath = "~/Views/Backoffice/Edit.cshtml";
 
         private readonly IThoughtService _thoughtService;
+
 
         public ThoughtsBackofficeController(IThoughtService thoughtService)
         {
@@ -38,20 +39,33 @@ namespace dottech.web.Controllers.Backoffice
         }
 
         [HttpGet("[action]")]
-        public IActionResult Create()
+        public IActionResult Edit(Guid id)
         {
-            return View(CreateViewPath);
+            var thought = id == Guid.Empty
+                ? CreateModel
+                : _thoughtService.Get(id).Map<ThoughtEditModel>();
+            return View(EditViewPath, thought);
         }
 
-        [HttpPost]
-        public IActionResult Create(ThoughtCreateModel model)
+        private ThoughtEditModel CreateModel {
+            get {
+                return new ThoughtEditModel()
+                {
+                    Id = Guid.NewGuid()
+                };
+            }
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Edit(ThoughtEditModel model)
         {
-            var thought = GetNewThought(model);
-            _thoughtService.Create(thought);
+            var thought = model.Map<ThoughtModel>();
+            _thoughtService.Save(thought);            
             return RedirectToAction("All");
         }
 
-        private ThoughtModel GetNewThought(ThoughtCreateModel model)
+
+        private ThoughtModel MapToModel(ThoughtEditModel model)
         {
             return new ThoughtModel()
             {

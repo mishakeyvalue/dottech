@@ -1,5 +1,6 @@
 ﻿using dottech.core.Infrastructure;
 using dottech.core.Services;
+using dottech.web.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

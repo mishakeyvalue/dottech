@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace dottech.core.Infrastructure
+namespace dottech.web.Infrastructure
 {
     public static class AutomapperInitializer
     {
@@ -9,6 +9,7 @@ namespace dottech.core.Infrastructure
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile<ThoughtAutomapperProfile>();
+                cfg.AddProfile<core.Infrastructure.ThoughtAutomapperProfile>();
             });
 
             Mapper.AssertConfigurationIsValid();

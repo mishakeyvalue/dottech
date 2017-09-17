@@ -1,11 +1,23 @@
-﻿@model dottech.web.ViewModels.BackofficeRoomViewModel
-
-<h2>Hi!</h2>
-<a class="btn btn-info" asp-action="Create">Create</a>
-
-@foreach(var thought in Model.Thoughts)
-{
-    <h2>@thought.Title</h2>
-    <div>@thought.Body</div>
+﻿@{
+    Layout = "_BackofficeLayout";
 }
 
+@model dottech.web.ViewModels.BackofficeRoomViewModel
+
+<h2>Hi!</h2>
+<a class="btn btn-info" asp-action="Edit" asp-route-id="@Guid.Empty">Create</a>
+<div class="row">
+    @foreach (var thought in Model.Thoughts)
+    {
+
+        <div class="col-md-12">
+            <div class="jumbotron well">
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@thought.Id">Edit</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@thought.Id">Delete</a>
+                <h2>@thought.Title</h2>
+                <hr />
+                <div>@Html.Raw(thought.Body)</div>
+            </div>
+        </div>
+    }
+</div>

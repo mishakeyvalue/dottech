@@ -4,7 +4,7 @@ using dottech.core.Persistence;
 
 namespace dottech.core.Infrastructure
 {
-    internal class ThoughtAutomapperProfile : Profile
+    public class ThoughtAutomapperProfile : Profile
     {
         public ThoughtAutomapperProfile()
         {

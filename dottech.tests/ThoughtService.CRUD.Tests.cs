@@ -1,12 +1,10 @@
 ﻿using Xunit;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using dottech.core.Models;
 using dottech.core.Services;
-using dottech.core.Infrastructure;
 using dottech.core.Persistence;
 using milab.DAL.Repositories;
+using dottech.web.Infrastructure;
 
 namespace dottech.tests
 {
@@ -25,6 +23,21 @@ namespace dottech.tests
 
             // act
             service.Create(thought);
+
+            // assert
+            Assert.Contains(service.GetAll(), t => t.Id == thought.Id);
+        }
+
+
+        [Fact]
+        public void ThoughtService_SaveNewThought_GetAllContainsIt()
+        {
+            // arrange
+            IThoughtService service = GetServiceInstance();
+            ThoughtModel thought = GetRandomThought();
+
+            // act
+            service.Save(thought);
 
             // assert
             Assert.Contains(service.GetAll(), t => t.Id == thought.Id);
@@ -71,7 +84,7 @@ namespace dottech.tests
             // act
             thought = service.Create(thought);
             thought.Title = dummyTitle;
-            thought = service.Update(thought);
+            thought = service.Save(thought);
 
             // assert
             Assert.Equal(dummyTitle, thought.Title);
