@@ -64,7 +64,7 @@ namespace dottech.web.Controllers.Backoffice
         }
 
         [HttpPost("[action]")]
-        public IActionResult Edit(ThoughtEditModel model)
+        public IActionResult Edit([FromForm] ThoughtEditModel model)
         {
             var thought = model.Map<ThoughtModel>();
             _thoughtService.Save(thought);            
