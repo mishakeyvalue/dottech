@@ -1,31 +1,36 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using dottech.core.Infrastructure;
+using dottech.core.Services;
+using Microsoft.AspNetCore.Mvc;
+using dottech.web.ViewModels;
+using System.Collections.Generic;
 
 namespace dottech.web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IThoughtService _thoughtService;
+
+        public HomeController(IThoughtService thoughtService)
+        {
+            _thoughtService = thoughtService;
+        }
         public IActionResult Index()
         {
-            return View();
+            var viewModel = GetHomeViewModel();
+            return View(viewModel);
         }
 
-        public IActionResult About()
+        private HomePageViewModel GetHomeViewModel()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            return new HomePageViewModel()
+            {
+                Feed = GetFeed()
+            };
         }
 
-        public IActionResult Contact()
+        private IEnumerable<ThoughtViewModel> GetFeed()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            return _thoughtService.GetAll().Map<IEnumerable<ThoughtViewModel>>();
         }
     }
 }
