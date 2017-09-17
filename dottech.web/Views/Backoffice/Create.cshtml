@@ -13,13 +13,17 @@
 
         <div class="form-group">
             <label>Body:</label>
-            <textarea id="code" name="code"><html</textarea>
+            <textarea id="code" name="Body"></textarea>
+
+            
         </div>
+        <p data-bind="html: body"></p>
         <input type="submit" class="btn btn-success" value="Post your thought!" />
     </form>
 
-    @Html.Raw("<h1>Hello!</h1>");
 </div>
+
+<script src="~/lib/knockout/dist/knockout.js"></script>
 
 <script src="~/lib/CodeMirror/lib/codemirror.js"></script>
 <script src="~/lib/CodeMirror/mode/htmlmixed/htmlmixed.js"></script>
@@ -32,8 +36,20 @@
 <script type="text/javascript">
     var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
         mode: 'text/html',
-        autoCloseTags: true
+        autoCloseTags: true,
     });
+
+    function ThoughtViewModel() {
+        var self = this;
+        self.body = ko.observable('something');
+        console.log(self.body())
+        editor.on('change', function (cm, change) {
+            var value = cm.getValue()
+            self.body(value);
+        });
+    }
+
+    ko.applyBindings(new ThoughtViewModel());
 </script>
 <link rel="stylesheet" href="~/lib/CodeMirror/lib/codemirror.css">
 

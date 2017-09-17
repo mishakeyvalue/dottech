@@ -6,7 +6,8 @@
     "jquery": "2.2.0",
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.6",
-    "CodeMirror": "v4_beta2"
+    "CodeMirror": "v4_beta2",
+    "knockout": "v3.4.2"
   },
   "resolutions": {
     "bootstrap": "v4.0.0-beta"
