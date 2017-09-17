@@ -1,31 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using dottech.core.Services;
+using dottech.core.Infrastructure;
+using dottech.web.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace dottech.web.Controllers
 {
+    
     public class ThoughtsController : Controller
     {
-        public IActionResult Index()
+        private readonly IThoughtService _thoughtService;
+
+        public ThoughtsController(IThoughtService thoughtService)
         {
-            return View();
+            _thoughtService = thoughtService;
         }
 
-        public IActionResult About()
+        [HttpGet("[controller]/{URI}")]
+        public IActionResult Index([FromRoute] string URI)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            var viewModel = _thoughtService.Get(URI).Map<ThoughtViewModel>();
+            return View(viewModel);
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
-        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿// Write your Javascript code.
 function myFilter(input) {
+    if (!input) return
     let uri = input.toLowerCase().replace(/[`~!@#$%^&*()_|+-=?;:'",.<>\{\}\[\]]/gi, '');
     uri = uri.replace(/[\s+]/g, '-');
     return uri.toLowerCase();

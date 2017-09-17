@@ -7,7 +7,7 @@
         <p class="card-text">
             @Html.Raw(Model.Body)
         </p>
-        <a href="@Model.URI" class="btn btn-primary">Read More &rarr;</a>
+        <a href="/thoughts/@Model.URI" class="btn btn-primary">Read More &rarr;</a>
     </div>
     <div class="card-footer text-muted">
         Posted on @Model.CreationDate

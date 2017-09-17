@@ -1,0 +1,15 @@
+﻿@model dottech.web.ViewModels.ThoughtViewModel
+
+<div class="col-lg-12">
+    <!-- Title -->
+    <h1 class="mt-4">@Model.Title</h1>
+    <hr>
+    <!-- Date/Time -->
+    <p>Posted on @Model.CreationDate</p>
+    <hr>
+
+    <!-- Post Content -->
+    @Html.Raw(Model.Body)
+    <hr>
+
+</div>

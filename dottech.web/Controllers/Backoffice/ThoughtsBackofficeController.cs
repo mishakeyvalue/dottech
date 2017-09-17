@@ -58,7 +58,8 @@ namespace dottech.web.Controllers.Backoffice
             get {
                 return new ThoughtEditModel()
                 {
-                    Id = Guid.NewGuid()
+                    Id = Guid.NewGuid(),
+                    CreationDate = DateTime.Now
                 };
             }
         }

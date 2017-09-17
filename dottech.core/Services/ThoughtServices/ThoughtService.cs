@@ -33,6 +33,14 @@ namespace dottech.core.Services
             return _thoughtRepository.Get(id).Map<ThoughtModel>();
         }
 
+        public ThoughtModel Get(string URI)
+        {
+            return _thoughtRepository
+                .GetAll()
+                .First(t => !t.IsDisabled && t.URI == URI)
+                .Map<ThoughtModel>();
+        }
+
         public ThoughtModel Save(ThoughtModel thought)
         {
             var entity = thought.Map<ThoughtEntity>();

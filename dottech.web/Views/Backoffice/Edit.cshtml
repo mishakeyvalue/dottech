@@ -9,8 +9,8 @@
     <form class="form-horizontal" action="Edit" method="post">
         <div class="form-group">
             <label>Title:</label>
-            <input asp-for="Title" />
-            <input type="text" name="URI" value="@Model.URI" />
+            <input asp-for="Title" data-bind="textInput: Title" />
+            <input type="text" name="URI" value="@Model.URI" data-bind="text: URI" />
         </div>
 
         <div class="form-group">
@@ -29,7 +29,8 @@
 
 </div>
 
-<script src="~/lib/knockout/dist/knockout.js"></script>
+@section Scripts{ 
+
 
 <script src="~/lib/CodeMirror/lib/codemirror.js"></script>
 <script src="~/lib/CodeMirror/mode/htmlmixed/htmlmixed.js"></script>
@@ -48,11 +49,21 @@
     function ThoughtViewModel() {
         var self = this;
         self.body = ko.observable(editor.getValue());
-        console.log(self.body())
         editor.on('change', function (cm, change) {
             var value = cm.getValue()
             self.body(value);
         });
+
+        self.Title = ko.observable();
+        self.URI = ko.pureComputed(function () {
+            var value = self.Title();
+            return myFilter(value);
+        })
+        self.Title.subscribe(function () {
+          //  self.URI.refresh()
+        })
     }
     ko.applyBindings(new ThoughtViewModel());
 </script>
+
+}
