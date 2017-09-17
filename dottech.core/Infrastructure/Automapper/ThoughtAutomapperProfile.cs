@@ -8,7 +8,9 @@ namespace dottech.core.Infrastructure
     {
         public ThoughtAutomapperProfile()
         {
-            CreateMap<ThoughtModel, ThoughtEntity>();
+            CreateMap<ThoughtModel, ThoughtEntity>()
+                .ForMember(dst => dst.IsDisabled, o => o.Ignore());
+
             CreateMap<ThoughtEntity, ThoughtModel>();
         }
     }

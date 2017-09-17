@@ -39,6 +39,13 @@ namespace dottech.web.Controllers.Backoffice
         }
 
         [HttpGet("[action]")]
+        public IActionResult Delete(Guid id)
+        {
+            _thoughtService.Delete(id);
+            return RedirectToAction("All");
+        }
+
+        [HttpGet("[action]")]
         public IActionResult Edit(Guid id)
         {
             var thought = id == Guid.Empty

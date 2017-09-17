@@ -1,7 +1,5 @@
 ﻿using milab.DAL.Persistence;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace dottech.core.Persistence
 {
@@ -12,5 +10,6 @@ namespace dottech.core.Persistence
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime CreationDate { get; set; }
+        public bool IsDisabled { get; set; }
     }
 }

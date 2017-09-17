@@ -13,7 +13,10 @@
         <div class="col-md-12">
             <div class="jumbotron well">
                 <a class="btn btn-warning" asp-action="Edit" asp-route-id="@thought.Id">Edit</a>
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@thought.Id">Delete</a>
+                <form asp-action="Delete" method="Delete">
+                    <input type="hidden" name="id" value="@thought.Id"/>
+                    <input class="btn btn-danger" type="submit" value="Delete"/>
+                </form>
                 <h2>@thought.Title</h2>
                 <hr />
                 <div>@Html.Raw(thought.Body)</div>

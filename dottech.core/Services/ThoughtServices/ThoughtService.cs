@@ -4,6 +4,7 @@ using dottech.core.Infrastructure;
 using dottech.core.Models;
 using dottech.core.Persistence;
 using milab.DAL.Repositories;
+using System.Linq;
 
 namespace dottech.core.Services
 {
@@ -24,7 +25,7 @@ namespace dottech.core.Services
 
         public IEnumerable<ThoughtModel> GetAll()
         {
-            return _thoughtRepository.GetAll().Map<IEnumerable<ThoughtModel>>();
+            return _thoughtRepository.GetAll().Where(e => !e.IsDisabled).Map<IEnumerable<ThoughtModel>>();
         }
 
         public ThoughtModel Get(Guid id)
@@ -41,7 +42,9 @@ namespace dottech.core.Services
 
         public void Delete(Guid id)
         {
-            _thoughtRepository.Delete(id);
+            var entity = _thoughtRepository.Get(id);
+            entity.IsDisabled = true;
+            _thoughtRepository.Save(entity);
         }
     }
 }
