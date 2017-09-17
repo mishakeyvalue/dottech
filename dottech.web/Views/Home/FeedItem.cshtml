@@ -1,3 +1,15 @@
 ﻿@model ThoughtViewModel
 
-@Html.Raw(Model.Body)
+<div class="card mb-4">
+    @*<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">*@
+    <div class="card-body">
+        <h2 class="card-title">@Model.Title</h2>
+        <p class="card-text">
+            @Html.Raw(Model.Body)
+        </p>
+        <a href="@Model.URI" class="btn btn-primary">Read More &rarr;</a>
+    </div>
+    <div class="card-footer text-muted">
+        Posted on @Model.CreationDate
+    </div>
+</div>

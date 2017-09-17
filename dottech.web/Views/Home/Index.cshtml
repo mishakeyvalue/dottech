@@ -3,8 +3,11 @@
 }
 @model dottech.web.ViewModels.HomePageViewModel
 
-
-@foreach (var item in Model.Feed)
-{
-    Html.RenderPartial("FeedItem", item);
-}
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var item in Model.Feed)
+        {
+            Html.RenderPartial("FeedItem", item);
+        }
+    </div>
+</div>
