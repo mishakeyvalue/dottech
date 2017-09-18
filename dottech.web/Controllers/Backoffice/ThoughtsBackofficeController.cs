@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using dottech.web.ViewModels;
 using dottech.core.Models;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dottech.web.Controllers.Backoffice
 {
+    [Authorize(AuthenticationSchemes = Startup.MyAuthSchemeAlias)]
     [Route("backoffice/thoughts")]
     public class ThoughtsBackofficeController : Controller
     {

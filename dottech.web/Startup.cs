@@ -1,6 +1,8 @@
 ﻿using dottech.core.Infrastructure;
 using dottech.core.Services;
+using dottech.web.Auth;
 using dottech.web.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +16,8 @@ namespace dottech.web
 {
     public class Startup
     {
+        public const string MyAuthSchemeAlias = "MyAuthScheme";
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -31,10 +35,22 @@ namespace dottech.web
         {
             // Add framework services.
             services.AddMvc();
+            services.AddAuthentication((opt) =>
+            {
+                opt.DefaultAuthenticateScheme = MyAuthSchemeAlias;
+                opt.DefaultChallengeScheme = MyAuthSchemeAlias;
+                opt.DefaultScheme = MyAuthSchemeAlias;
+            })
+            .AddCookie(opt =>
+            {
+                opt.LoginPath = "/backoffice/auth";
+            });
 
-            services.AddSingleton<IConnectionStringProvider>(s => 
+            services.AddSingleton<IConnectionStringProvider>(s =>   
                 new DefaultConnectionStringProvider(Configuration.GetConnectionString("mongo"))
             );
+
+            services.AddSingleton<IAuthorizationHandler, MyAuthorizationHandler>();
 
             services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(IRepository<,>), typeof(MongoRepository<,>));
@@ -55,9 +71,8 @@ namespace dottech.web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
-            app.UseStaticFiles();   
-
+            app.UseMyAuth();
+            app.UseStaticFiles();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
