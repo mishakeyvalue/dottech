@@ -5,6 +5,7 @@ using dottech.web.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -55,6 +56,7 @@ namespace dottech.web
             services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(IRepository<,>), typeof(MongoRepository<,>));
             services.AddScoped<IThoughtService, ThoughtService>();
+            services.AddScoped<IAuthHelper, AuthHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,8 +73,8 @@ namespace dottech.web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseMyAuth();
             app.UseStaticFiles();
+            app.SetAuthorToHeader("mitutee");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

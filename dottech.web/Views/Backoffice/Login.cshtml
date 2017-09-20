@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "View";
+}
+@model string
+
+<h2>View</h2>
+
+<form asp-action="Login" asp-controller="AutorizationBackoffice" method="post">
+    <input type="text" name="pass" value="" /> 
+    <input type="hidden" name="redirect" value="@Model" />
+    <input type="submit"  value="Go!" />
+</form>
+
