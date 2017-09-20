@@ -24,13 +24,16 @@ namespace dottech.web.Auth
         public async Task Invoke(HttpContext httpContext)
         {
             var context = new RouteContext(httpContext);
+            var h = context.Handler.Method;
+            if (!IsAuthorized(httpContext))
+                httpContext.Response.Redirect($"{LoginPage}?redirect={httpContext.Request.Path}");
             await _next(httpContext);
         }
 
         private bool IsAuthorized(HttpContext context)
         {
 
-            return 
+            return  
                 (context.Request.Cookies.TryGetValue(CookieAuthKey, out string value) 
                     ? _authHelper.IsValidCredentials(value)
                     : false);

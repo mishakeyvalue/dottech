@@ -17,8 +17,6 @@ namespace dottech.web
 {
     public class Startup
     {
-        public const string MyAuthSchemeAlias = "MyAuthScheme";
-
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -35,16 +33,8 @@ namespace dottech.web
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
-            services.AddAuthentication((opt) =>
+            services.AddMvc(o =>
             {
-                opt.DefaultAuthenticateScheme = MyAuthSchemeAlias;
-                opt.DefaultChallengeScheme = MyAuthSchemeAlias;
-                opt.DefaultScheme = MyAuthSchemeAlias;
-            })
-            .AddCookie(opt =>
-            {
-                opt.LoginPath = "/backoffice/auth";
             });
 
             services.AddSingleton<IConnectionStringProvider>(s =>   
