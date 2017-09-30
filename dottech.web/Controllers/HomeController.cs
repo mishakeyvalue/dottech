@@ -3,9 +3,11 @@ using dottech.core.Services;
 using Microsoft.AspNetCore.Mvc;
 using dottech.web.ViewModels;
 using System.Collections.Generic;
+using dottech.web.Auth;
 
 namespace dottech.web.Controllers
 {
+    [MyAuthFilter]
     public class HomeController : Controller
     {
         private readonly IThoughtService _thoughtService;

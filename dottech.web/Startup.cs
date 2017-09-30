@@ -46,7 +46,7 @@ namespace dottech.web
             services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(IRepository<,>), typeof(MongoRepository<,>));
             services.AddScoped<IThoughtService, ThoughtService>();
-            services.AddScoped<IAuthHelper, AuthHelper>();
+            //services.AddScoped<IAuthHelper, AuthHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

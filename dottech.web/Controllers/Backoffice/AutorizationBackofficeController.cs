@@ -13,13 +13,7 @@ namespace dottech.web.Controllers.Backoffice
     public class AutorizationBackofficeController : Controller
     {
         public string LoginViewPath { get; } = "~/Views/Backoffice/Login.cshtml";
-
-        private readonly IAuthHelper _authHelper;
-
-        public AutorizationBackofficeController(IAuthHelper authHelper)
-        {
-            _authHelper = authHelper;
-        }
+       
 
         [HttpGet]
         public IActionResult Index(string redirect)
@@ -29,9 +23,9 @@ namespace dottech.web.Controllers.Backoffice
 
         [HttpPost]
         public IActionResult Login(string pass, string redirect)
-        {
-            if (_authHelper.IsValidPass(pass))
-                return Redirect(redirect);
+        {        //{
+        //    if (_authHelper.IsValidPass(pass))
+        //        return Redirect(redirect);
             return Unauthorized();
         }
     }
