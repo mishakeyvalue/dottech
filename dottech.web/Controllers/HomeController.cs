@@ -7,7 +7,7 @@ using dottech.web.Auth;
 
 namespace dottech.web.Controllers
 {
-    [MyAuthFilter]
+    [TypeFilter(typeof(MyAuthFilterAttribute))]
     public class HomeController : Controller
     {
         private readonly IThoughtService _thoughtService;

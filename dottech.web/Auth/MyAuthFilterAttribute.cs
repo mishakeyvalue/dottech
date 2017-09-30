@@ -1,39 +1,36 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using static dottech.web.Auth.AuthHelper;
 
 namespace dottech.web.Auth
 {
     public class MyAuthFilterAttribute : ActionFilterAttribute
     {
-        private const string AuthControllerName = "/backoffice/auth";
-        private readonly string AuthCookieKey = "miau";
+        private readonly IAuthService authService;
+
+        public MyAuthFilterAttribute(IAuthService authService)
+        {
+            this.authService = authService;
+        }
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             if (!IsAuthorized(context.HttpContext.Request.Cookies))
             {
-                context.Result = new RedirectToActionResult("Index", "AutorizationBackoffice", "");                
+                context.Result = new RedirectToActionResult("Index",
+                    "AutorizationBackoffice",
+                    new { redirect = context.HttpContext.Request.Path});                
                 return;
             }
             base.OnActionExecuting(context);
-        }
-        
+        }        
 
         private bool IsAuthorized(IRequestCookieCollection cookies)
         {
             return cookies.TryGetValue(AuthCookieKey, out string hash)
-                ? IsValidCookieHash(hash)
+                ? authService.IsValidHash(hash)
                 : false;
-        }
-
-        private bool IsValidCookieHash(string hash)
-        {
-            return hash == "qwerty".GetMD5();
         }
     }
 }

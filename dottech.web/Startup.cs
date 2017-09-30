@@ -46,6 +46,7 @@ namespace dottech.web
             services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(IRepository<,>), typeof(MongoRepository<,>));
             services.AddScoped<IThoughtService, ThoughtService>();
+            services.AddScoped<IAuthService, AuthService>();
             //services.AddScoped<IAuthHelper, AuthHelper>();
         }
 
