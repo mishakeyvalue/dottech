@@ -33,15 +33,11 @@ namespace dottech.web
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc(o =>
-            {
-            });
+            services.AddMvc();
 
             services.AddSingleton<IConnectionStringProvider>(s =>   
                 new DefaultConnectionStringProvider(Configuration.GetConnectionString("mongo"))
             );
-
-            services.AddSingleton<IAuthorizationHandler, MyAuthorizationHandler>();
 
             services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(IRepository<,>), typeof(MongoRepository<,>));

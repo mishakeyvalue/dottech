@@ -5,17 +5,18 @@ using System.Collections.Generic;
 using dottech.web.ViewModels;
 using dottech.core.Models;
 using System;
+using dottech.web.Auth;
 
 namespace dottech.web.Controllers.Backoffice
 {
     [Route("backoffice/thoughts")]
+    [TypeFilter(typeof(MyAuthFilterAttribute))]
     public class ThoughtsBackofficeController : Controller
     {
         private readonly string BackofficeRoomViewPath = "~/Views/Backoffice/Room.cshtml";
         private readonly string EditViewPath = "~/Views/Backoffice/Edit.cshtml";
 
         private readonly IThoughtService _thoughtService;
-
 
         public ThoughtsBackofficeController(IThoughtService thoughtService)
         {
